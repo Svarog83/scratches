@@ -1,0 +1,14 @@
+{
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "optimize-autoloader": false,
+  "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "psr-4": {
+      "SV\\": "src\\"
+    }
+  }
+}
