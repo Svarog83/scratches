@@ -12,7 +12,7 @@ class ContainsDuplicate {
 	 * @param Integer[] $nums
 	 * @return int|null
 	 */
-	public function solve($nums): ?int {
+	public function solve( array $nums): ?int {
 
 		$dup = false;
 
