@@ -14,7 +14,7 @@ class AllDuplicatesInArrayTest extends TestCase {
 	}
 
 	public function additionProvider(): array {
-		return [ [ [ 4, 3, 2, 7, 8, 2, 3, 1 ], [ 3, 2 ] ],
+		return [ [ [ 4, 3, 2, 7, 8, 2, 3, 1 ], [ 2, 3 ] ],
 				 [ [ 1, 1, 2 ], [ 1 ] ],
 				 [ [ 1 ], [] ], ];
 	}

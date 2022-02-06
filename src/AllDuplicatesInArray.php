@@ -11,7 +11,8 @@ class AllDuplicatesInArray {
 
 	/**
 	 * Optimal version. Idea was similar to AllMissingNumbers
-	 * Record met only once as '-'. Met twiced - will stay positive.
+	 * Record met only once as '-'. Met twice - will stay positive.
+	 * Removed not needed second for. The result can be achieved with one iteration
 	 *
 	 * It was sill slower than my solution
 	 * Runtime: 132 ms, faster than 60.00% of PHP online submissions for Find All Duplicates in an Array.
@@ -42,19 +43,15 @@ class AllDuplicatesInArray {
 			$position = abs( $num ) - 1;
 			$posValue = $nums[ $position ];
 
-			$nums[ $position ] = $posValue * -1;
-		}
-
-		foreach ( $nums as $num ) {
-			$num      = abs( $num );
-			$position = $num - 1;
-			$posValue = $nums[ $position ];
-			if ( $posValue > 0 && !isset( $found[ $num ] ) ) {
-				$found[ $num ] = $num;
+			if ( $posValue < 0 ) {
+				$found[] = abs($num);
+			}
+			else {
+				$nums[ $position ] = $posValue * -1;
 			}
 		}
 
-		return array_values($found);
+		return $found;
 	}
 
 	/**
