@@ -8,8 +8,29 @@ namespace SV;
  * future to sell that stock.
  *
  * Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ *
+ * Need to use two pointers!
  */
 class BestTimeBuySellStock {
+
+	public function solve( array $prices ): int {
+		$l    = 0; //left=buy
+		$r    = 1; //right = sell
+		$maxP = 0;
+		while ( $r < count( $prices ) ) {
+			//profitable?
+			if ( $prices[ $l ] < $prices[ $r ] ) {
+				$profit = $prices[ $r ] - $prices[ $l ];
+				$maxP   = max( $maxP, $profit );
+			} else {
+				$l = $r;
+			}
+
+			$r++;
+		}
+
+		return $maxP;
+	}
 
 	/**
 	 * My version
@@ -19,7 +40,7 @@ class BestTimeBuySellStock {
 	 * @return int
 	 */
 
-	public function solve( array $prices ): int {
+	public function solve2( array $prices ): int {
 		$curMin = $prices[0];
 		$curMax = 0;
 		foreach ( $prices as $price ) {
