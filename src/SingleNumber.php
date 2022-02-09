@@ -45,7 +45,7 @@ class SingleNumber {
 	 * @param $nums
 	 * @return int|mixed
 	 */
-	public function singleNumberRes($nums) {
+	public function singleNumberRes($nums): mixed {
 		$res = 0;
 		foreach ($nums as $num) {
 			$res ^= $num;
