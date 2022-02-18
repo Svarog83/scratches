@@ -3,7 +3,8 @@
 namespace SV;
 
 /**
- * Need to use lo and hi. And calcualte mid on each step.
+ * Need to use lo = 0 and hi = count(nums) -1. And calcualte mid on each step (most difficult!)
+ * $middle = $lo + floor( ( $hi - $lo + 1 ) / 2 );
  *
  * Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to
  * search target in nums. If target exists, then return its index. Otherwise, return -1.
@@ -12,7 +13,44 @@ namespace SV;
  */
 class BinarySearch {
 
+	/**
+	 * My version - tried to rewrite
+	 *
+	 * @param array $nums
+	 * @param int   $target
+	 * @return int
+	 */
 	public function solve( array $nums, int $target ): int {
+		$lo = 0;
+		$hi = count( $nums ) - 1;
+
+//		[ [ -1, 0, 2, 3, 5, 9, 12 ], target: 9, index: 5 ]
+		//lo = 0, hi = 6, middle = 3, curVal 3 < 9, lo = 3, hi = 6 - so go to next step
+		//lo = 3, hi = 6, middle = 3 + ((3+1)/2) = 5, curVal = 9, bingo!
+
+		while ( $lo < $hi ) {
+			$middle = $lo + floor( ( $hi - $lo + 1 ) / 2 );
+			$curVal = $nums[$middle];
+			if ($curVal === $target) {
+				$lo = $middle;
+				break;
+			}
+
+			if ($curVal < $target) {
+				$lo = $middle;
+			}
+			else {
+				$hi = $middle -1;
+			}
+		}
+
+		return $nums[ $lo ] ? $lo : -1;
+	}
+
+	/*
+	 * The best version
+	 */
+	public function solve_optimal( array $nums, int $target ): int {
 		$lo = 0;
 		$hi = count( $nums ) - 1;
 		while ( $lo < $hi ) {
