@@ -7,8 +7,8 @@ class TwoSumTest extends TestCase {
 	 * @dataProvider additionProvider
 	 */
 	public function testSolve($nums, $target, $expected): void {
-		$threeSum = new SV\TwoSum();
-		$res      = $threeSum->solve($nums, $target);
+		$twoSum = new SV\TwoSum();
+		$res      = $twoSum->solve($nums, $target);
 
 		$this->assertEquals($expected, $res);
 	}
